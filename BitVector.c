@@ -1,8 +1,14 @@
+/*
+	Austin Herring
+	August 3, 2014
+
+	BitVector.c
+	An implementation of a BitVector data type with zero-indexing and an arbitrary number of bits.
+*/
+
 #include <stdlib.h>
 
 #include "BitVector.h"
-
-#define BITS_PER_UNIT 32
 
 void INITIALIZE(BitVector *bv, int num_bits)
 {

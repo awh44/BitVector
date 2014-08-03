@@ -17,10 +17,10 @@ int main()
 	{
 		SET_BIT(&bv, i);
 		printf("GET_BIT(%d) = %u\n", i, GET_BIT(&bv, i));
-		printf("bv.bits[%d] = %u\n\n", i / 32, bv.bits[i / 32]);
+		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
 	}
 
-	printf("Enter a number to continue: ");
+	printf("Enter any number to continue: ");
 	int tmp;
 	scanf("%d", &tmp);
 
@@ -29,8 +29,10 @@ int main()
 	{
 		UNSET_BIT(&bv, i);
 		printf("GET_BIT(%d) = %u\n", i, GET_BIT(&bv, i));
-		printf("bv.bits[%d] = %u\n\n", i / 32, bv.bits[i / 32]);
+		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
 	}
+
+	FREE_BITVECTOR(&bv);
 
 	return 0;
 }
