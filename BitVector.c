@@ -37,6 +37,14 @@ void UNSET_BIT(BitVector *bv, int bit_num)
 	bv->bits[unit] &= ~(1 << bit);
 }
 
+void TOGGLE_BIT(BitVector *bv, int bit_num)
+{
+	int unit = bit_num / BITS_PER_UNIT;
+   int bit = bit_num % BITS_PER_UNIT;
+
+	bv->bits[unit] ^= (1 << bit);
+}
+
 unsigned short GET_BIT(BitVector *bv, int bit_num)
 {
 	int unit = bit_num / BITS_PER_UNIT;

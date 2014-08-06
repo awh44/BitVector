@@ -24,13 +24,19 @@ int main()
 	int tmp;
 	scanf("%d", &tmp);
 
-	printf("Unsetting from bit %d to bit 0...\n", n - 1);
+	printf("\nUnsetting from bit %d to bit 0...\n", n - 1);
 	for (i = n - 1; i > -1; i--)
 	{
 		UNSET_BIT(&bv, i);
 		printf("GET_BIT(%d) = %u\n", i, GET_BIT(&bv, i));
 		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
 	}
+
+	printf("\nBefore toggling bit 0: %d\n", GET_BIT(&bv, 0));
+	TOGGLE_BIT(&bv, 0);
+	printf("After toggling bit 0: %d\n", GET_BIT(&bv, 0));
+	TOGGLE_BIT(&bv, 0);
+	printf("After toggling again: %d\n", GET_BIT(&bv, 0));
 
 	FREE_BITVECTOR(&bv);
 

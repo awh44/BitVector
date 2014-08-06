@@ -23,5 +23,7 @@ void FREE_BITVECTOR(BitVector *bv);
 void SET_BIT(BitVector *bv, int bit_num);
 //set the bit at bit_num  to 'false' (i.e., 0)
 void UNSET_BIT(BitVector *bv, int bit_num);
+//toggle the bit in the given position - i.e, 1 goes to 0, 0 to 1
+void TOGGLE_BIT(BitVector *bv, int bit_num);
 //get the truth value of the bit at bit_num, either 0 or 1
 unsigned short GET_BIT(BitVector *bv, int bit_num);
