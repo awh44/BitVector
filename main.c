@@ -32,11 +32,21 @@ int main()
 		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
 	}
 
-	printf("\nBefore toggling bit 0: %d\n", GET_BIT(&bv, 0));
-	TOGGLE_BIT(&bv, 0);
-	printf("After toggling bit 0: %d\n", GET_BIT(&bv, 0));
-	TOGGLE_BIT(&bv, 0);
-	printf("After toggling again: %d\n", GET_BIT(&bv, 0));
+	printf("\nBefore toggling bit 0 (bv.bits[0]): %d\n", bv.bits[0]);
+	INVERT_BIT(&bv, 0);
+	printf("After toggling bit 0 (bv.bits[0]): %d\n", bv.bits[0]);
+	INVERT_ALL_BITS(&bv);
+	printf("After inverting all bits (bv.bits[0]): %d\n", bv.bits[0]);
+	INVERT_ALL_BITS(&bv);
+	printf("After inverting all bits again (bv.bits[0]): %d\n", bv.bits[0]);
+	INVERT_BIT(&bv, 0);
+	printf("After inverting bit 0 again (bv.bits[0]): %d\n", bv.bits[0]);
+
+	SET_ALL_BITS(&bv);
+	printf("\nAfter setting all bits (bv.bits[0]): %d\n", bv.bits[0]);
+
+	UNSET_ALL_BITS(&bv);
+	printf("After unsetting all bits (bv.bits[0]): %d\n", bv.bits[0]);
 
 	FREE_BITVECTOR(&bv);
 
