@@ -9,7 +9,7 @@
 #include <stdint.h>
 
 #define BITS_PER_UNIT 8
-#define MAX_UNIT_VALUE 127
+#define MAX_UNIT_VALUE 255
 
 typedef struct
 {
