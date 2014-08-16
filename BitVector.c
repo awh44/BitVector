@@ -10,9 +10,9 @@
 
 #include "BitVector.h"
 
-void INITIALIZE(BitVector *bv, int num_bits)
+void INITIALIZE(BitVector *bv, unsigned int num_bits)
 {
-	int units = ((num_bits - 1) / BITS_PER_UNIT) + 1;
+	unsigned int units = ((num_bits - 1) / BITS_PER_UNIT) + 1;
 	bv->bits = calloc(units, sizeof *bv->bits);
 	bv->units = units;
 }
@@ -24,7 +24,7 @@ void FREE_BITVECTOR(BitVector *bv)
 
 void INVERT_ALL_BITS(BitVector *bv)
 {
-	int i;
+	unsigned int i;
 	for (i = 0; i < bv->units; i++)
 	{
 		bv->bits[i] ^= MAX_UNIT_VALUE;
@@ -33,7 +33,7 @@ void INVERT_ALL_BITS(BitVector *bv)
 
 void SET_ALL_BITS(BitVector *bv)
 {
-	int i;
+	unsigned int i;
 	for (i = 0; i < bv->units; i++)
 	{
 		bv->bits[i] |= MAX_UNIT_VALUE;
@@ -42,41 +42,41 @@ void SET_ALL_BITS(BitVector *bv)
 
 void UNSET_ALL_BITS(BitVector *bv)
 {
-	int i;
+	unsigned int i;
 	for (i = 0; i < bv->units; i++)
 	{
 		bv->bits[i] &= 0;
 	}
 }
 
-void SET_BIT(BitVector *bv, int bit_num)
+void SET_BIT(BitVector *bv, unsigned int bit_num)
 {
-	int unit = bit_num / BITS_PER_UNIT;
-	int bit = bit_num % BITS_PER_UNIT;
+	unsigned int unit = bit_num / BITS_PER_UNIT;
+	unsigned int bit = bit_num % BITS_PER_UNIT;
 
 	bv->bits[unit] |= 1 << bit;
 }
 
-void UNSET_BIT(BitVector *bv, int bit_num)
+void UNSET_BIT(BitVector *bv, unsigned int bit_num)
 {
-	int unit = bit_num / BITS_PER_UNIT;
-	int bit = bit_num % BITS_PER_UNIT;
+	unsigned int unit = bit_num / BITS_PER_UNIT;
+	unsigned int bit = bit_num % BITS_PER_UNIT;
 
 	bv->bits[unit] &= ~(1 << bit);
 }
 
-void INVERT_BIT(BitVector *bv, int bit_num)
+void INVERT_BIT(BitVector *bv, unsigned int bit_num)
 {
-	int unit = bit_num / BITS_PER_UNIT;
-   int bit = bit_num % BITS_PER_UNIT;
+	unsigned int unit = bit_num / BITS_PER_UNIT;
+   unsigned int bit = bit_num % BITS_PER_UNIT;
 
 	bv->bits[unit] ^= (1 << bit);
 }
 
-unsigned short GET_BIT(BitVector *bv, int bit_num)
+unsigned short GET_BIT(BitVector *bv, unsigned int bit_num)
 {
-	int unit = bit_num / BITS_PER_UNIT;
-	int bit = bit_num % BITS_PER_UNIT;
+	unsigned int unit = bit_num / BITS_PER_UNIT;
+	unsigned int bit = bit_num % BITS_PER_UNIT;
 
 	return bv->bits[unit] & (1 << bit) ? 1 : 0;
 }
