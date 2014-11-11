@@ -5,6 +5,8 @@
 	BitVector.h
 	An implementation of a BitVector data type with zero-indexing and an arbitrary number of bits.
 */
+#ifndef _BIT_VECTOR_H_
+#define _BIT_VECTOR_H_
 
 #include <stdint.h>
 
@@ -35,3 +37,5 @@ void UNSET_BIT(BitVector *bv, unsigned int bit_num);
 void INVERT_BIT(BitVector *bv, unsigned int bit_num);
 //get the truth value of the bit at bit_num, either 0 or 1
 unsigned short GET_BIT(BitVector *bv, unsigned int bit_num);
+
+#endif
