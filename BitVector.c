@@ -7,6 +7,7 @@
 */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "BitVector.h"
 
@@ -33,20 +34,12 @@ void INVERT_ALL_BITS(BitVector *bv)
 
 void SET_ALL_BITS(BitVector *bv)
 {
-	unsigned int i;
-	for (i = 0; i < bv->units; i++)
-	{
-		bv->bits[i] |= MAX_UNIT_VALUE;
-	}
+	memset(bv->bits, MAX_UNIT_VALUE, bv->units * sizeof *bv->bits);
 }
 
 void UNSET_ALL_BITS(BitVector *bv)
 {
-	unsigned int i;
-	for (i = 0; i < bv->units; i++)
-	{
-		bv->bits[i] &= 0;
-	}
+	memset(bv->bits, 0, bv->units * sizeof *bv->bits);
 }
 
 void SET_BIT(BitVector *bv, unsigned int bit_num)
@@ -68,7 +61,7 @@ void UNSET_BIT(BitVector *bv, unsigned int bit_num)
 void INVERT_BIT(BitVector *bv, unsigned int bit_num)
 {
 	unsigned int unit = bit_num / BITS_PER_UNIT;
-   unsigned int bit = bit_num % BITS_PER_UNIT;
+	unsigned int bit = bit_num % BITS_PER_UNIT;
 
 	bv->bits[unit] ^= (1 << bit);
 }
