@@ -11,19 +11,19 @@
 
 #include "BitVector.h"
 
-void INITIALIZE(BitVector *bv, size_t num_bits)
+void bitvector_initialize(BitVector *bv, size_t num_bits)
 {
 	size_t units = ((num_bits - 1) / BITS_PER_UNIT) + 1;
 	bv->bits = calloc(units, sizeof *bv->bits);
 	bv->units = units;
 }
 
-void FREE_BITVECTOR(BitVector *bv)
+void bitvector_uninitialize(BitVector *bv)
 {
 	free(bv->bits);
 }
 
-void INVERT_ALL_BITS(BitVector *bv)
+void bitvector_invert_all_bits(BitVector *bv)
 {
 	size_t i;
 	for (i = 0; i < bv->units; i++)
@@ -32,17 +32,17 @@ void INVERT_ALL_BITS(BitVector *bv)
 	}
 }
 
-void SET_ALL_BITS(BitVector *bv)
+void bitvector_set_all_bits(BitVector *bv)
 {
 	memset(bv->bits, MAX_UNIT_VALUE, bv->units * sizeof *bv->bits);
 }
 
-void UNSET_ALL_BITS(BitVector *bv)
+void bitvector_unset_all_bits(BitVector *bv)
 {
 	memset(bv->bits, 0, bv->units * sizeof *bv->bits);
 }
 
-void SET_BIT(BitVector *bv, size_t bit_num)
+void bitvector_set_bit(BitVector *bv, size_t bit_num)
 {
 	size_t unit = bit_num / BITS_PER_UNIT;
 	size_t bit = bit_num % BITS_PER_UNIT;
@@ -50,7 +50,7 @@ void SET_BIT(BitVector *bv, size_t bit_num)
 	bv->bits[unit] |= 1 << bit;
 }
 
-void UNSET_BIT(BitVector *bv, size_t bit_num)
+void bitvector_unset_bit(BitVector *bv, size_t bit_num)
 {
 	size_t unit = bit_num / BITS_PER_UNIT;
 	size_t bit = bit_num % BITS_PER_UNIT;
@@ -58,7 +58,7 @@ void UNSET_BIT(BitVector *bv, size_t bit_num)
 	bv->bits[unit] &= ~(1 << bit);
 }
 
-void INVERT_BIT(BitVector *bv, size_t bit_num)
+void bitvector_invert_bit(BitVector *bv, size_t bit_num)
 {
 	size_t unit = bit_num / BITS_PER_UNIT;
 	size_t bit = bit_num % BITS_PER_UNIT;
@@ -66,7 +66,7 @@ void INVERT_BIT(BitVector *bv, size_t bit_num)
 	bv->bits[unit] ^= (1 << bit);
 }
 
-unsigned short GET_BIT(BitVector *bv, size_t bit_num)
+unsigned short bitvector_get_bit(BitVector *bv, size_t bit_num)
 {
 	size_t unit = bit_num / BITS_PER_UNIT;
 	size_t bit = bit_num % BITS_PER_UNIT;
