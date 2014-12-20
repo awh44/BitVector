@@ -2,6 +2,8 @@
 
 #include "BitVector.h"
 
+extern const uint8_t BITVECTOR_BITS_PER_UNIT;
+
 int main()
 {
 	printf("How many bits would you like to test with?\n");
@@ -17,7 +19,7 @@ int main()
 	{
 		bitvector_set_bit(&bv, i);
 		printf("bitvector_get_bit(%d) = %u\n", i, bitvector_get_bit(&bv, i));
-		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
+		printf("bv.bits[%d] = %u\n\n", i / BITVECTOR_BITS_PER_UNIT, bv.bits[i / BITVECTOR_BITS_PER_UNIT]);
 	}
 
 	printf("Enter any number to continue: ");
@@ -29,7 +31,7 @@ int main()
 	{
 		bitvector_unset_bit(&bv, i);
 		printf("bitvector_get_bit(%d) = %u\n", i, bitvector_get_bit(&bv, i));
-		printf("bv.bits[%d] = %u\n\n", i / BITS_PER_UNIT, bv.bits[i / BITS_PER_UNIT]);
+		printf("bv.bits[%d] = %u\n\n", i / BITVECTOR_BITS_PER_UNIT, bv.bits[i / BITVECTOR_BITS_PER_UNIT]);
 	}
 
 	printf("\nBefore toggling bit 0 (bv.bits[0]): %d\n", bv.bits[0]);
