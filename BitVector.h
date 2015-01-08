@@ -26,7 +26,7 @@ typedef struct
 void bitvector_initialize(BitVector *bv, size_t num_bits);
 
 /*
-	handles unitializing the BitVector; should be called after the BitVector is done with
+	uninitializes the BitVector; should be called after work with the BitVector is done
 	@param bv the BitVector to uninitialize
 */
 void bitvector_uninitialize(BitVector *bv);
