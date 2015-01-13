@@ -66,7 +66,7 @@ void bitvector_invert_bit(BitVector *bv, size_t bit_num)
 	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
 	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
 
-	bv->bits[unit] ^= (1 << bit);
+	bv->bits[unit] ^= 1 << bit;
 }
 
 unsigned short bitvector_get_bit(BitVector *bv, size_t bit_num)
