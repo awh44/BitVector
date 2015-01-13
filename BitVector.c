@@ -74,5 +74,5 @@ unsigned short bitvector_get_bit(BitVector *bv, size_t bit_num)
 	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
 	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
 
-	return (bv->bits[unit] >> bit) & 1;
+	return bv->bits[unit] >> bit & 1;
 }
