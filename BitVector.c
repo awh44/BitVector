@@ -11,6 +11,10 @@
 
 #include "BitVector.h"
 
+#define BITVECTOR_GET_UNIT_BIT(unit, bit, bit_num)\
+	unit = bit_num / BITVECTOR_BITS_PER_UNIT;\
+	bit = bit_num % BITVECTOR_BITS_PER_UNIT;
+
 const uint8_t BITVECTOR_BITS_PER_UNIT = 8;
 const uint8_t BITVECTOR_MAX_UNIT_VALUE = 0xff;
 
@@ -47,32 +51,32 @@ void bitvector_unset_all_bits(bitvector_t *bv)
 
 void bitvector_set_bit(bitvector_t *bv, size_t bit_num)
 {
-	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
-	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
+	size_t unit, bit;
+	BITVECTOR_GET_UNIT_BIT(unit, bit, bit_num);
 
 	bv->bits[unit] |= 1 << bit;
 }
 
 void bitvector_unset_bit(bitvector_t *bv, size_t bit_num)
 {
-	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
-	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
+	size_t unit, bit;
+	BITVECTOR_GET_UNIT_BIT(unit, bit, bit_num);
 
 	bv->bits[unit] &= ~(1 << bit);
 }
 
 void bitvector_invert_bit(bitvector_t *bv, size_t bit_num)
 {
-	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
-	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
+	size_t unit, bit;
+	BITVECTOR_GET_UNIT_BIT(unit, bit, bit_num);
 
 	bv->bits[unit] ^= 1 << bit;
 }
 
 unsigned short bitvector_get_bit(bitvector_t *bv, size_t bit_num)
 {
-	size_t unit = bit_num / BITVECTOR_BITS_PER_UNIT;
-	size_t bit = bit_num % BITVECTOR_BITS_PER_UNIT;
+	size_t unit, bit;
+	BITVECTOR_GET_UNIT_BIT(unit, bit, bit_num);
 
 	return bv->bits[unit] >> bit & 1;
 }
