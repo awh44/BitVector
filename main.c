@@ -10,7 +10,7 @@ int main()
 	int n;
 	scanf("%d", &n);
 
-	BitVector bv;	
+	bitvector_t bv;	
 	bitvector_initialize(&bv, n);
 
 	printf("Setting from bit 0 to bit %d...\n", n - 1);
